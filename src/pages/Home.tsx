@@ -1,7 +1,7 @@
 import About from "../components/About";
-import Card from "../components/Card";
 import ContactSection from "../components/ContactUs";
 import Hero from "../components/Hero";
+import HowItWorks from "../components/HowItWorks";
 import PricingCard from "../components/PricingCard";
 import Section from "../components/Section";
 
@@ -10,35 +10,26 @@ const Home: React.FC = () => {
     <>
       <Hero />
       <About />
-      <Section id="how" title="How It Works">
-        <div className="grid md:grid-cols-4 gap-6">
-          <Card title="Choose a Plan">
-            Daily, weekly or monthly rental options
-          </Card>
-          <Card title="Quick KYC">
-            Basic verification & refundable deposit
-          </Card>
-          <Card title="Pick Your EV">
-            Collect from our nearby hub
-          </Card>
-          <Card title="Ride & Earn">
-            Focus on work, we handle the rest
-          </Card>
-        </div>
+      <Section id="how" title="How It Works" subtitle="Rent an EV in four simple steps.">
+        <HowItWorks />
       </Section>
 
-      <Section id="pricing" title="Rental Plans">
-        <div className="grid md:grid-cols-3 gap-6">
-          <PricingCard title="Daily" price="299" />
-          <PricingCard title="Weekly" price="1,499" />
-          <PricingCard title="Monthly" price="4,999" />
+      <Section
+        id="pricing"
+        title="Rental Plans"
+        subtitle="Flexible options for delivery partners and commuters."
+      >
+        <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          <PricingCard title="Daily" price="299" period="/day" />
+          <PricingCard title="Weekly" price="1,499" period="/week" featured />
+          <PricingCard title="Monthly" price="4,999" period="/month" />
         </div>
-        <p className="text-center text-muted max-w-2xl mt-5 mx-auto text-lg">
+        <p className="text-center text-muted max-w-2xl mt-8 mx-auto text-sm">
           Refundable Deposit: ₹1,000 · Late Fee: ₹300/day
         </p>
       </Section>
 
-      <Section id="contact" title="Contact Us">
+      <Section id="contact" title="Contact Us" subtitle="Reach out or visit our hub in Hyderabad.">
         <ContactSection />
       </Section>
     </>

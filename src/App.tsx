@@ -4,9 +4,9 @@ import Home from "./pages/Home";
 
 const App: React.FC = () => {
   return (
-    <div className="bg-bg text-textMain font-poppins min-h-screen">
+    <div className="bg-bg text-textMain font-poppins min-h-screen antialiased">
       <Navbar />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow">
         <Home />
       </main>
       <Footer />

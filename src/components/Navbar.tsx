@@ -1,51 +1,114 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const navLinks = [
+  { label: "Home", href: "#", scrollTop: true },
+  { label: "About", href: "#about" },
+  { label: "How It Works", href: "#how" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Navbar: React.FC = () => {
-    const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : ""
+  );
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
-    return (
-        <header className="bg-white border-b border-gray-200 px-6 md:px-[60px] relative">
-            <div className="flex justify-between items-center">
-                {/* Logo */}
-                <div className="flex items-center cursor-pointer" onClick={scrollToTop}>
-                    <img src={`${import.meta.env.BASE_URL}mywheels-ev.png`} alt="logo" className="h-20" />
-                </div>
+  useEffect(() => {
+    const onHashChange = () => setActiveHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center">
-                    <a className="ml-[24px] font-medium" href="#about">About</a>
-                    <a className="ml-[24px] font-medium" href="#how">How It Works</a>
-                    <a className="ml-[24px] font-medium" href="#pricing">Pricing</a>
-                    <a className="ml-[24px] font-medium" href="#contact">Contact</a>
-                </nav>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    setActiveHash("");
+    setOpen(false);
+  };
 
-                {/* Hamburger Button */}
+  const closeMenu = () => setOpen(false);
+
+  const isActive = (link: (typeof navLinks)[0]) =>
+    link.scrollTop ? activeHash === "" || activeHash === "#" : activeHash === link.href;
+
+  const linkClass = (link: (typeof navLinks)[0]) =>
+    `px-4 py-2 rounded-lg font-medium transition-colors ${
+      isActive(link)
+        ? "text-primary bg-primary/10"
+        : "text-dark hover:text-primary hover:bg-primary/5"
+    }`;
+  const mobileLinkClass = (link: (typeof navLinks)[0]) =>
+    `block py-3 px-4 rounded-lg font-medium transition-colors ${
+      link.scrollTop ? "w-full text-left" : ""
+    } ${isActive(link) ? "text-primary bg-primary/10" : "text-dark hover:bg-primary/5 hover:text-primary"}`;
+
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200/80 shadow-sm">
+      <div className="px-6 md:px-[60px] py-3">
+        <div className="flex justify-between items-center max-w-7xl mx-auto">
+          <button type="button" onClick={scrollToTop} className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary/30 rounded-lg">
+            <img src={`${import.meta.env.BASE_URL}mywheels-ev.png`} alt="MyWheels EV" className="h-16 md:h-20" />
+          </button>
+
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) =>
+              link.scrollTop ? (
                 <button
-                    className="md:hidden text-2xl"
-                    onClick={() => setOpen(!open)}
+                  key={link.label}
+                  type="button"
+                  onClick={() => { scrollToTop(); closeMenu(); }}
+                  className={linkClass(link)}
                 >
-                    ☰
+                  {link.label}
                 </button>
-            </div>
-
-            {/* Mobile Dropdown */}
-            {open && (
-                <div className="md:hidden mt-4 space-y-4 pb-4">
-                    <a href="#about" className="block">About</a>
-                    <a href="#how" className="block">How It Works</a>
-                    <a href="#pricing" className="block">Pricing</a>
-                    <a href="#contact" className="block">Contact</a>
-                </div>
+              ) : (
+                <a key={link.href} href={link.href} className={linkClass(link)}>
+                  {link.label}
+                </a>
+              )
             )}
-        </header>
-    );
+          </nav>
+
+          <button
+            type="button"
+            className="md:hidden p-2 text-2xl text-dark hover:bg-gray-100 rounded-lg"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label="Toggle menu"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+
+        {open && (
+          <nav className="md:hidden mt-4 pt-4 pb-2 border-t border-gray-200 space-y-1">
+            {navLinks.map((link) =>
+              link.scrollTop ? (
+                <button
+                  key={link.label}
+                  type="button"
+                  onClick={() => { scrollToTop(); closeMenu(); }}
+                  className={mobileLinkClass(link)}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={mobileLinkClass(link)}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
+          </nav>
+        )}
+      </div>
+    </header>
+  );
 };
 
 export default Navbar;
-

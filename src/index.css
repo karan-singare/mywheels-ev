@@ -18,3 +18,19 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Parallax section: fixed background for depth */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Subtle grid pattern overlay */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}

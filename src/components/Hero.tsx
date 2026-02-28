@@ -1,15 +1,54 @@
 const Hero: React.FC = () => {
-    return (
-        <section className="py-24 px-6 md:px-[60px] text-center bg-bg">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Affordable EV Rentals for Everyday Riders
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto text-lg">
-                Electric bikes for delivery partners and commuters.
-                Simple plans, fast KYC, zero ownership stress.
-            </p>
-        </section>
-    );
+  return (
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden">
+      {/* Solid dark gradient - ensures readable contrast everywhere */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-[#141c6c] via-[#1c298b] to-[#184cba]"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" aria-hidden />
+
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-float" aria-hidden />
+      <div className="absolute bottom-32 right-10 w-80 h-80 bg-teal/25 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} aria-hidden />
+      <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-green/20 rounded-full blur-2xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <p className="text-[#84d06e] text-sm md:text-base font-semibold uppercase tracking-widest mb-4 animate-fade-in-up">
+          Electric bike rentals · Hyderabad
+        </p>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up drop-shadow-sm" style={{ animationDelay: "0.1s" }}>
+          Affordable EV Rentals for{" "}
+          <span className="text-[#84d06e]">Everyday Riders</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          Electric bikes for delivery partners and commuters. Simple plans, quick verification, zero ownership stress.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <a
+            href="#pricing"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-[#141c6c] bg-[#84d06e] hover:bg-[#7ac766] shadow-lg shadow-black/20 transition-all duration-300 hover:scale-105"
+          >
+            View plans
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-white bg-white/20 border-2 border-white/50 hover:bg-white/30 transition-all duration-300"
+          >
+            Contact us
+          </a>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80">
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <div className="w-6 h-10 rounded-full border-2 border-white/60 flex justify-center pt-1">
+          <div className="w-1 h-2 rounded-full bg-white animate-bounce" />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;
