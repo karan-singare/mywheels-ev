@@ -8,16 +8,40 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const SECTION_IDS = ["about", "how", "pricing", "contact"] as const;
+const ACTIVE_OFFSET = 150;
+
+function getActiveSection(): string {
+  let active = "";
+  for (const id of SECTION_IDS) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= ACTIVE_OFFSET) active = "#" + id;
+  }
+  return active;
+}
+
+const HERO_SCROLL_THRESHOLD = 320;
+
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState(() =>
-    typeof window !== "undefined" ? window.location.hash : ""
-  );
+  const [activeHash, setActiveHash] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onHashChange = () => setActiveHash(window.location.hash);
+    const onScroll = () => {
+      setActiveHash(getActiveSection());
+      setScrolled(window.scrollY > HERO_SCROLL_THRESHOLD);
+    };
+    const onHashChange = () => setActiveHash(window.location.hash || getActiveSection());
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -30,25 +54,47 @@ const Navbar: React.FC = () => {
   const closeMenu = () => setOpen(false);
 
   const isActive = (link: (typeof navLinks)[0]) =>
-    link.scrollTop ? activeHash === "" || activeHash === "#" : activeHash === link.href;
+    link.scrollTop ? (activeHash === "" || activeHash === "#") : activeHash === link.href;
 
-  const linkClass = (link: (typeof navLinks)[0]) =>
-    `px-4 py-2 rounded-lg font-medium transition-colors ${
-      isActive(link)
-        ? "text-primary bg-primary/10"
-        : "text-dark hover:text-primary hover:bg-primary/5"
+  const linkClass = (link: (typeof navLinks)[0]) => {
+    const active = isActive(link);
+    if (!scrolled) {
+      return `px-4 py-2 rounded-lg font-medium transition-colors ${
+        active ? "text-white bg-white/15" : "text-white/85 hover:text-white hover:bg-white/10"
+      }`;
+    }
+    return `px-4 py-2 rounded-lg font-medium transition-colors ${
+      active ? "text-primary bg-primary/10" : "text-dark hover:text-primary hover:bg-primary/5"
     }`;
-  const mobileLinkClass = (link: (typeof navLinks)[0]) =>
-    `block py-3 px-4 rounded-lg font-medium transition-colors ${
+  };
+  const mobileLinkClass = (link: (typeof navLinks)[0]) => {
+    const active = isActive(link);
+    if (!scrolled) {
+      return `block py-3 px-4 rounded-lg font-medium transition-colors ${
+        link.scrollTop ? "w-full text-left" : ""
+      } ${active ? "text-white bg-white/15" : "text-white/85 hover:text-white hover:bg-white/10"}`;
+    }
+    return `block py-3 px-4 rounded-lg font-medium transition-colors ${
       link.scrollTop ? "w-full text-left" : ""
-    } ${isActive(link) ? "text-primary bg-primary/10" : "text-dark hover:bg-primary/5 hover:text-primary"}`;
+    } ${active ? "text-primary bg-primary/10" : "text-dark hover:bg-primary/5 hover:text-primary"}`;
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200/80 shadow-sm">
-      <div className="px-6 md:px-[60px] py-3">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur border-b border-gray-200/80 shadow-sm"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="px-6 md:px-[60px] py-1.5 md:py-2">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <button type="button" onClick={scrollToTop} className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary/30 rounded-lg">
-            <img src={`${import.meta.env.BASE_URL}mywheels-ev.png`} alt="MyWheels EV" className="h-16 md:h-20" />
+            <img
+              src={`${import.meta.env.BASE_URL}mywheels-ev.png`}
+              alt="MyWheels EV"
+              className={`h-14 md:h-20 transition-all duration-300`}
+            />
           </button>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -72,7 +118,7 @@ const Navbar: React.FC = () => {
 
           <button
             type="button"
-            className="md:hidden p-2 text-2xl text-dark hover:bg-gray-100 rounded-lg"
+            className={`md:hidden p-2 text-2xl rounded-lg transition-colors ${scrolled ? "text-dark hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label="Toggle menu"
@@ -82,7 +128,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {open && (
-          <nav className="md:hidden mt-4 pt-4 pb-2 border-t border-gray-200 space-y-1">
+          <nav className={`md:hidden mt-3 pt-3 pb-2 space-y-1 ${scrolled ? "border-t border-gray-200" : "border-t border-white/20"}`}>
             {navLinks.map((link) =>
               link.scrollTop ? (
                 <button

@@ -1,5 +1,6 @@
 import About from "../components/About";
 import ContactSection from "../components/ContactUs";
+import CTAStrip from "../components/CTAStrip";
 import Hero from "../components/Hero";
 import HowItWorks from "../components/HowItWorks";
 import PricingCard from "../components/PricingCard";
@@ -10,7 +11,7 @@ const Home: React.FC = () => {
     <>
       <Hero />
       <About />
-      <Section id="how" title="How It Works" subtitle="Rent an EV in four simple steps.">
+      <Section id="how" title="How It Works" subtitle="Rent an EV in four simple steps." variant="light">
         <HowItWorks />
       </Section>
 
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
         id="pricing"
         title="Rental Plans"
         subtitle="Flexible options for delivery partners and commuters."
+        variant="tint"
       >
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           <PricingCard title="Daily" price="299" period="/day" />
@@ -29,9 +31,11 @@ const Home: React.FC = () => {
         </p>
       </Section>
 
-      <Section id="contact" title="Contact Us" subtitle="Reach out or visit our hub in Hyderabad.">
+      <Section id="contact" title="Contact Us" subtitle="Reach out or visit our hub in Hyderabad." variant="light">
         <ContactSection />
       </Section>
+
+      <CTAStrip />
     </>
   );
 };

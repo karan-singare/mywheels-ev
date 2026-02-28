@@ -25,7 +25,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
       className={`relative rounded-2xl p-8 text-center transition-all duration-300 ${
         featured
           ? "bg-primary text-white shadow-xl shadow-primary/25 scale-105 border-2 border-primary z-10"
-          : "bg-white shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:border-primary/20"
+          : "bg-white shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5"
       }`}
     >
       {featured && (

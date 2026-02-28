@@ -13,10 +13,10 @@ const HowItWorks: React.FC = () => {
           <div key={step.num} className="relative">
             {/* Connecting line on desktop */}
             {i < steps.length - 1 && (
-              <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-gradient-to-r from-primary/40 to-transparent z-0" style={{ width: "calc(100% + 1.5rem)" }} />
+              <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-gradient-to-r from-primary/60 to-primary/20 z-0" style={{ width: "calc(100% + 1.5rem)" }} />
             )}
-            <div className="relative z-10 bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-xl bg-primary text-white font-bold text-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+            <div className="relative z-10 bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
+              <div className="w-14 h-14 rounded-xl bg-primary text-white font-bold text-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-primary/20">
                 {step.num}
               </div>
               <h3 className="font-bold text-lg text-dark mb-2">{step.title}</h3>

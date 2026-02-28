@@ -23,9 +23,11 @@ const ContactSection: React.FC = () => {
         {items.map((item) => (
           <div
             key={item.label}
-            className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:shadow-xl hover:border-primary/20 transition-all duration-300"
+            className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:shadow-xl hover:border-primary/30 transition-all duration-300"
           >
-            <div className="text-3xl mb-3">{item.icon}</div>
+            <div className="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-2xl mx-auto mb-4">
+              {item.icon}
+            </div>
             <p className="text-dark font-semibold">{item.label}</p>
             <p className="mt-1 text-muted">{item.value}</p>
           </div>

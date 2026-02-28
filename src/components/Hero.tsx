@@ -1,27 +1,45 @@
+import Navbar from "./Navbar";
+
 const Hero: React.FC = () => {
+  const bgImage = `${import.meta.env.BASE_URL}home-bg.webp`;
+
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden">
-      {/* Solid dark gradient - ensures readable contrast everywhere */}
+    <section className="relative min-h-screen w-full flex flex-col overflow-hidden">
+      {/* Full-bleed background */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#141c6c] via-[#1c298b] to-[#184cba]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${bgImage})` }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" aria-hidden />
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to bottom, rgba(20,28,108,0.72) 0%, rgba(20,28,108,0.62) 35%, rgba(20,28,108,0.68) 65%, rgba(20,28,108,0.78) 100%)",
+        }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-grid-pattern opacity-10" aria-hidden />
 
       {/* Floating orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-float" aria-hidden />
-      <div className="absolute bottom-32 right-10 w-80 h-80 bg-teal/25 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} aria-hidden />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" aria-hidden />
+      <div className="absolute bottom-32 right-10 w-80 h-80 bg-teal/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} aria-hidden />
       <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-green/20 rounded-full blur-2xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <p className="text-[#84d06e] text-sm md:text-base font-semibold uppercase tracking-widest mb-4 animate-fade-in-up">
+      {/* Navbar over hero - sticky, blended */}
+      <Navbar />
+
+      {/* Hero content - with top padding so it sits below nav */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 md:px-16 pt-24 pb-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[#84d06e] text-sm md:text-base font-semibold uppercase tracking-widest mb-4 animate-fade-in-up drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]" style={{ color: "#a8e092" }}>
           Electric bike rentals · Hyderabad
         </p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up drop-shadow-sm" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" style={{ animationDelay: "0.1s" }}>
           Affordable EV Rentals for{" "}
           <span className="text-[#84d06e]">Everyday Riders</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <p className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10 animate-fade-in-up drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]" style={{ animationDelay: "0.2s" }}>
           Electric bikes for delivery partners and commuters. Simple plans, quick verification, zero ownership stress.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -37,6 +55,7 @@ const Hero: React.FC = () => {
           >
             Contact us
           </a>
+        </div>
         </div>
       </div>
 
