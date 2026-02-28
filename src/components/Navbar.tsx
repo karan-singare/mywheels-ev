@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
             <div className="flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center gap-3 cursor-pointer" onClick={scrollToTop}>
-                    <img src="/mywheels-ev.png" alt="logo" className="h-20" />
+                    <img src={`${import.meta.env.BASE_URL}mywheels-ev.png`} alt="logo" className="h-20" />
                     <span className="font-semibold text-xl text-primary">
                         MyWheels-EV
                     </span>
