@@ -2,7 +2,6 @@ import About from "../components/About";
 import Card from "../components/Card";
 import ContactSection from "../components/ContactUs";
 import Hero from "../components/Hero";
-import KYCForm from "../components/KYCForm";
 import PricingCard from "../components/PricingCard";
 import Section from "../components/Section";
 
@@ -37,10 +36,6 @@ const Home: React.FC = () => {
         <p className="text-center text-muted max-w-2xl mt-5 mx-auto text-lg">
           Refundable Deposit: ₹1,000 · Late Fee: ₹300/day
         </p>
-      </Section>
-
-      <Section id="kyc" title="KYC Registration">
-        <KYCForm />
       </Section>
 
       <Section id="contact" title="Contact Us">
