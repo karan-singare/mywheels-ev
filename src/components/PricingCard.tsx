@@ -24,12 +24,12 @@ const PricingCard: React.FC<PricingCardProps> = ({
     <div
       className={`relative rounded-2xl p-8 text-center transition-all duration-300 ${
         featured
-          ? "bg-primary text-white shadow-xl shadow-primary/25 scale-105 border-2 border-primary z-10"
-          : "bg-white shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5"
+          ? "bg-primary text-white shadow-xl shadow-primary/25 scale-105 border-2 border-primary z-10 hover:scale-[1.08] hover:shadow-2xl focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+          : "bg-white shadow-lg shadow-gray-200/50 border border-gray-100 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/40 hover:scale-[1.02] focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2"
       }`}
     >
       {featured && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-green text-dark text-xs font-bold uppercase tracking-wide">
+        <div className="mb-4 inline-block px-4 py-1.5 rounded-full bg-green text-dark text-xs font-bold uppercase tracking-wide">
           Most popular
         </div>
       )}
@@ -52,7 +52,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         ))}
       </ul>
       <a
-        href="#contact"
+        href="tel:+919121969734"
         className={`mt-8 inline-block w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
           featured
             ? "bg-white text-primary hover:bg-gray-100"

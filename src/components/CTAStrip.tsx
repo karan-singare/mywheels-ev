@@ -23,7 +23,7 @@ const CTAStrip: React.FC = () => {
               View plans
             </a>
             <a
-              href="#contact"
+              href="tel:+919121969734"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/80 hover:bg-white/15 transition-all duration-300"
             >
               Contact us
