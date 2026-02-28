@@ -13,9 +13,9 @@ const ContactSection: React.FC = () => {
     },
     {
       label: "Email",
-      value: "support@mywheelsev.in",
+      value: "contactus@mywheelsev.com",
       icon: "✉️",
-      href: "mailto:support@mywheelsev.in",
+      href: "mailto:contactus@mywheelsev.com",
     },
   ];
 
