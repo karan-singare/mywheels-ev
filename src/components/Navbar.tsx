@@ -52,13 +52,11 @@ const Navbar: React.FC = () => {
 
   const linkClass = (link: (typeof navLinks)[0]) => {
     const active = isActive(link);
-    return `px-4 py-2 rounded-lg font-medium transition-colors ${
-      active ? "text-primary bg-primary/10" : "text-dark hover:text-primary hover:bg-primary/5"
-    }`;
+    return `px-4 py-2 rounded-lg font-medium transition-colors ${active ? "text-primary bg-primary/10" : "text-dark hover:text-primary hover:bg-primary/5"
+      }`;
   };
   const mobileLinkClass = (link: (typeof navLinks)[0]) =>
-    `block py-3 px-4 rounded-lg font-medium transition-colors ${
-      link.scrollTop ? "w-full text-left" : ""
+    `block py-3 px-4 rounded-lg font-medium transition-colors ${link.scrollTop ? "w-full text-left" : ""
     } ${isActive(link) ? "text-primary bg-primary/10" : "text-dark hover:bg-primary/5 hover:text-primary"}`;
 
   return (
@@ -69,7 +67,7 @@ const Navbar: React.FC = () => {
             <img
               src={`${import.meta.env.BASE_URL}mywheels-ev.webp`}
               alt="MyWheels EV"
-              className="h-14 md:h-20 transition-all duration-300"
+              className="h-10 md:h-14 transition-all duration-300"
             />
           </button>
 
