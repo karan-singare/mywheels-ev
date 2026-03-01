@@ -1,102 +1,66 @@
-import Section from "./Section";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function About() {
-  const iconStyles: Record<string, { bg: string; color: string }> = {
-    primary: { bg: "rgba(24,76,186,0.15)", color: "#184cba" },
-    teal: { bg: "rgba(64,177,175,0.15)", color: "#40b1af" },
-    green: { bg: "rgba(132,208,110,0.15)", color: "#84d06e" },
-  };
+  const ref = useScrollReveal();
 
   return (
-    <Section id="about" tightTop variant="tint">
-      <div className="flex flex-col items-center text-center mx-auto">
-        <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-2">Who we are</p>
-        <h2 className="text-3xl md:text-5xl font-bold text-dark">
-          About <span className="text-primary">MyWheels EV</span>
-        </h2>
-        <div className="mt-3 w-12 h-1 rounded-full bg-primary mx-auto" aria-hidden />
-        <p className="mt-6 text-lg text-muted max-w-3xl mx-auto">
-          MyWheels EV is a Hyderabad-based electric mobility company, strategically operating out of{" "}
-          <span className="font-medium text-dark">Ameerpet</span>—a central hub that seamlessly connects IT corridors,
-          residential communities, and high-density commercial zones. We power the people who keep the city moving.
-        </p>
-        <p className="mt-4 text-muted max-w-3xl mx-auto">
-          Our electric two-wheeler rentals are purpose-built for today’s fast-paced workforce—serving delivery partners
-          across platforms like Blinkit, Zepto, Swiggy Instamart, Zomato, Swiggy, as well as last-mile operators
-          working with Amazon and Flipkart. We also support gig workers and corporate field teams who rely on
-          dependable mobility to perform at their best.
-        </p>
-        <p className="mt-6 text-dark font-medium max-w-2xl mx-auto">
-          At MyWheels EV, we recognize a simple but critical truth: <span className="text-primary">mobility is income.</span>{" "}
-          When a vehicle is down, productivity drops. When it’s reliable, earnings grow.
-        </p>
-        <p className="mt-4 text-muted max-w-2xl mx-auto">
-          That’s why we are built around three core promises:
-        </p>
-      </div>
+    <section id="about" className="bg-white">
+      <div ref={ref} className="px-6 md:px-[60px] mx-auto max-w-7xl py-28 md:py-32">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <p className="text-primary font-semibold text-[13px] uppercase tracking-[0.25em] mb-3 scroll-reveal">
+            Who We Are
+          </p>
+          <h2 className="text-[2rem] md:text-[2.25rem] lg:text-[2.5rem] font-semibold text-dark tracking-[-0.02em] scroll-reveal scroll-reveal-delay-1">
+            About <span className="text-primary">MyWheels EV</span>
+          </h2>
+          <div className="mt-5 w-12 h-[3px] rounded-full bg-primary mx-auto scroll-reveal scroll-reveal-delay-2" aria-hidden />
+          <p className="mt-6 text-[17px] text-muted max-w-2xl mx-auto leading-[1.7] scroll-reveal scroll-reveal-delay-3">
+            Hyderabad-based electric mobility company powering the people who keep the city moving. Affordable rentals, rapid support, and maximum uptime.
+          </p>
+        </div>
 
-      <div className="mt-12 grid md:grid-cols-3 gap-8">
-        {[
-          {
-            icon: "⚡",
-            title: "High Uptime",
-            desc: "Vehicles that are always ready when you are.",
-            color: "primary",
-          },
-          {
-            icon: "💰",
-            title: "Cost Efficiency",
-            desc: "Affordable plans that maximize take-home earnings.",
-            color: "teal",
-          },
-          {
-            icon: "🔧",
-            title: "Rapid Local Support",
-            desc: "On-ground assistance that minimizes downtime.",
-            color: "green",
-          },
-        ].map((item) => {
-          const style = iconStyles[item.color];
-          return (
+        {/* Feature cards */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: "⚡",
+              title: "High Uptime",
+              desc: "Vehicles that are always ready when you are. We keep you on the road earning, not waiting.",
+              bg: "rgba(24,76,186,0.1)",
+              color: "#184cba",
+            },
+            {
+              icon: "💰",
+              title: "Cost Efficiency",
+              desc: "Save ₹300–₹500 daily compared to fuel bikes. Maximize your take-home income every month.",
+              bg: "rgba(64,177,175,0.1)",
+              color: "#40b1af",
+            },
+            {
+              icon: "🛠",
+              title: "Rapid Local Support",
+              desc: "On-ground assistance in Hyderabad that minimizes downtime. We're just a call away.",
+              bg: "rgba(132,208,110,0.1)",
+              color: "#84d06e",
+            },
+          ].map((item, i) => (
             <div
               key={item.title}
-              className="bg-white p-8 rounded-2xl shadow-lg shadow-gray-200/50 border-2 border-transparent hover:shadow-xl hover:border-primary/30 transition-all duration-300 group overflow-hidden"
+              className={`scroll-reveal scroll-reveal-delay-${i + 1} bg-white p-12 rounded-3xl shadow-[0_4px_32px_rgba(0,0,0,0.06)] border border-gray-100 hover:shadow-[0_12px_40px_rgba(24,76,186,0.12)] hover:border-primary/30 hover:-translate-y-1.5 transition-all duration-300 group`}
             >
               <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform duration-300"
-                style={{ backgroundColor: style.bg, color: style.color }}
+                className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-7 group-hover:scale-110 transition-transform duration-300"
+                style={{ backgroundColor: item.bg, color: item.color }}
               >
                 {item.icon}
               </div>
-              <h3 className="font-bold text-lg text-dark mb-3">{item.title}</h3>
+              <h3 className="font-bold text-xl text-dark mb-3">{item.title}</h3>
               <p className="text-muted leading-relaxed">{item.desc}</p>
             </div>
-          );
-        })}
-      </div>
-
-      {/* Why MyWheels EV strip */}
-      <div className="mt-20 relative rounded-2xl overflow-hidden">
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-tertiary parallax-bg opacity-90"
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-grid-pattern" aria-hidden />
-        <div className="relative z-10 p-10 md:p-14 text-center text-white">
-          <h3 className="text-xl font-bold mb-6">Why MyWheels EV</h3>
-          <ul className="text-left max-w-2xl mx-auto space-y-3 text-white/95">
-            <li><strong>Built for high-demand fleet usage</strong> – Optimized for 100–140 km daily usage and dense traffic conditions across Hyderabad.</li>
-            <li><strong>Lower operating costs</strong> – Reduced running costs compared to petrol vehicles, increasing rider take-home income.</li>
-            <li><strong>Local presence</strong> – Headquartered in ESI for faster support and on-ground response.</li>
-            <li><strong>Minimal downtime</strong> – Regular preventive maintenance and structured support.</li>
-            <li><strong>Transparent plans</strong> – Clear pricing with predictable weekly and monthly expenses.</li>
-          </ul>
-          <p className="mt-8 text-white/90 max-w-2xl mx-auto">
-            Whether you're an independent gig worker optimizing daily earnings or a corporate team scaling field operation,{" "}
-            <span className="font-semibold text-green">MyWheels EV</span> delivers mobility that works as hard as you do.
-          </p>
+          ))}
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

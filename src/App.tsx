@@ -1,17 +1,19 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Home from "./pages/Home";
 
 const App: React.FC = () => {
   return (
-    <div className="bg-bg text-textMain font-poppins min-h-screen antialiased">
+    <div className="bg-bg text-muted font-manrope min-h-screen antialiased">
       <Navbar />
-      <main className="flex-grow">
+      <main>
         <Home />
       </main>
       <Footer />
       <BackToTop />
+      <WhatsAppButton />
     </div>
   );
 };
