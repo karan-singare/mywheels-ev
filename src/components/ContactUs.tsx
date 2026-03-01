@@ -1,8 +1,8 @@
 const ContactSection: React.FC = () => {
   const items = [
     {
-      label: "Hub Location",
-      value: "SR Nagar, ESI, Hyderabad",
+      label: "Address",
+      value: "Plot no. 6, Sundarnagar, part of House No. 7-1-644/6/A/2, Sundarnagar, Hyderabad – 500038",
       icon: "📍",
     },
     {

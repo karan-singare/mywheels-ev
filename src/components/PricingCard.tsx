@@ -14,9 +14,9 @@ const PricingCard: React.FC<PricingCardProps> = ({
   features = [],
 }) => {
   const defaultFeatures: Record<string, string[]> = {
-    Daily: ["Full day rental", "Pick & return same day", "Ideal for trials"],
-    Weekly: ["7 days", "Best for short gigs", "Great value"],
-    Monthly: ["30 days", "Best for regular riders", "Lowest per-day rate"],
+    Weekly: ["Ideal for short-term or trial usage", "7 days", "Great for testing the fit"],
+    Monthly: ["Most preferred by full-time delivery partners", "30 days", "Predictable monthly expense"],
+    "Long-Term Fleet": ["3, 6, or 12 months", "Lowest equivalent monthly cost", "Maintenance support & priority assistance"],
   };
   const list = features.length ? features : defaultFeatures[title] || [];
 
@@ -37,8 +37,11 @@ const PricingCard: React.FC<PricingCardProps> = ({
         {title}
       </h3>
       <div className={`text-4xl font-bold mt-4 ${featured ? "text-white" : "text-primary"}`}>
-        ₹{price}
-        <span className="text-lg font-normal opacity-80">{period}</span>
+        {price === "—" ? (
+          <span className="text-lg font-semibold">Contact for pricing</span>
+        ) : (
+          <>₹{price}<span className="text-lg font-normal opacity-80">{period}</span></>
+        )}
       </div>
       <ul className="mt-6 space-y-3 text-left">
         {list.map((f) => (

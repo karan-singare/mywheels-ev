@@ -11,27 +11,43 @@ const Home: React.FC = () => {
     <>
       <Hero />
       <About />
-      <Section id="how" title="How It Works" subtitle="Rent an EV in four simple steps." variant="light">
+      <Section id="how" title="How It Works" subtitle="Register, verify, choose your plan, and start earning—simple and fast." variant="light">
         <HowItWorks />
       </Section>
 
       <Section
         id="pricing"
-        title="Rental Plans"
-        subtitle="Flexible options for delivery partners and commuters."
+        title="Pricing Details"
+        subtitle="Weekly, monthly, or long-term fleet plans. Final pricing may vary based on vehicle type and usage category."
         variant="tint"
       >
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
-          <PricingCard title="Daily" price="299" period="/day" />
-          <PricingCard title="Weekly" price="1,499" period="/week" featured />
-          <PricingCard title="Monthly" price="4,999" period="/month" />
+          <PricingCard
+            title="Weekly Plan"
+            price="1,499"
+            period="/week"
+            features={["Ideal for short-term or trial usage.", "7 days.", "Great for testing the fit."]}
+          />
+          <PricingCard
+            title="Monthly Plan"
+            price="4,999"
+            period="/month"
+            featured
+            features={["Most preferred by full-time delivery partners.", "30 days.", "Predictable monthly expense."]}
+          />
+          <PricingCard
+            title="Long-Term Fleet Plan"
+            price="—"
+            period=""
+            features={["3, 6, or 12 months.", "Lowest equivalent monthly cost with maintenance support and priority assistance."]}
+          />
         </div>
         <p className="text-center text-muted max-w-2xl mt-8 mx-auto text-sm">
-          Refundable Deposit: ₹1,000 · Late Fee: ₹300/day
+          Contact us for exact rates based on your usage.
         </p>
       </Section>
 
-      <Section id="contact" title="Contact Us" subtitle="Reach out or visit our hub in Hyderabad." variant="light">
+      <Section id="contact" title="Contact Us" subtitle="MyWheels EV Pvt Ltd — Reach out or visit us at Sundarnagar, Hyderabad." variant="light">
         <ContactSection />
       </Section>
 

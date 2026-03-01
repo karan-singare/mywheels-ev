@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <button type="button" onClick={scrollToTop} className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary/30 rounded-lg">
             <img
-              src={`${import.meta.env.BASE_URL}mywheels-ev.png`}
+              src={`${import.meta.env.BASE_URL}mywheels-ev.webp`}
               alt="MyWheels EV"
               className="h-14 md:h-20 transition-all duration-300"
             />

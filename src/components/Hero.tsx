@@ -28,14 +28,14 @@ const Hero: React.FC = () => {
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 md:px-16 pt-24 pb-6 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-[#84d06e] text-sm md:text-base font-semibold uppercase tracking-widest mb-4 animate-fade-in-up drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]" style={{ color: "#a8e092" }}>
-          Electric bike rentals · Hyderabad
+          Electric mobility · Ameerpet, Hyderabad
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" style={{ animationDelay: "0.1s" }}>
-          Affordable EV Rentals for{" "}
-          <span className="text-[#84d06e]">Everyday Riders</span>
+          We Power the People Who{" "}
+          <span className="text-[#84d06e]">Keep the City Moving</span>
         </h1>
         <p className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10 animate-fade-in-up drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]" style={{ animationDelay: "0.2s" }}>
-          Electric bikes for delivery partners and commuters. Simple plans, quick verification, zero ownership stress.
+          Electric two-wheeler rentals for delivery partners, last-mile operators, and gig workers. High uptime, affordable plans, rapid local support—so you earn more.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
           <a
