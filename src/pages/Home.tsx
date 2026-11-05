@@ -39,7 +39,7 @@ const Home: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           <PricingCard
             title="Weekly Plan"
-            price="1,499"
+            price="2,000"
             period="/week"
             features={[
               "Ideal for short-term or trial usage",
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
           />
           <PricingCard
             title="Monthly Plan"
-            price="4,999"
+            price="8,000"
             period="/month"
             featured
             tag="Best for Full-Time Riders"
@@ -62,13 +62,13 @@ const Home: React.FC = () => {
             ]}
           />
           <PricingCard
-            title="Daily Plan"
-            price="249"
-            period="/day"
+            title="2-Week Plan"
+            price="4,000"
+            period="/2 weeks"
             features={[
               "Perfect for trying before committing",
-              "No minimum period required",
-              "Pay as you go flexibility",
+              "14-day rental period",
+              "Flexible mid-length option",
               "Ideal for part-time riders",
             ]}
           />

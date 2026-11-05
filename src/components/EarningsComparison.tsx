@@ -52,7 +52,7 @@ const EarningsComparison: React.FC = () => {
               {[
                 { label: "Daily charging cost", value: "₹30–₹50" },
                 { label: "Maintenance", value: "Included" },
-                { label: "Monthly rental", value: "₹4,999/month" },
+                { label: "Monthly rental", value: "₹8,000/month" },
               ].map((item) => (
                 <div key={item.label} className="flex justify-between items-center py-3 border-b border-primary/10 last:border-0">
                   <span className="text-muted">{item.label}</span>

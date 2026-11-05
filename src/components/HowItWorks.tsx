@@ -3,7 +3,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const steps = [
   { icon: "📝", title: "Register", desc: "Contact us or walk in to get started." },
   { icon: "✅", title: "KYC Verification", desc: "Submit ID proof for quick approval." },
-  { icon: "📋", title: "Choose Plan", desc: "Pick weekly, monthly, or long-term." },
+  { icon: "📋", title: "Choose Plan", desc: "Pick weekly, 2-week, or monthly." },
   { icon: "🛵", title: "Vehicle Allocation", desc: "Collect your EV from our hub." },
   { icon: "💰", title: "Start Earning", desc: "Hit the road and maximize income." },
 ];
