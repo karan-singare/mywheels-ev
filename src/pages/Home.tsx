@@ -39,7 +39,7 @@ const Home: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           <PricingCard
             title="Weekly Plan"
-            price="2,000"
+            price="2,200"
             period="/week"
             features={[
               "Ideal for short-term or trial usage",
